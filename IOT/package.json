@@ -1,0 +1,13 @@
+{
+  "name": "aws_iot",
+  "version": "1.0.0",
+  "description": "Aws enabled IOT sample",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Sage X3",
+  "license": "MIT",
+  "dependencies": {
+    "aws-iot-device-sdk": "^1.0.12",
+    "rpio": "^0.9.11"
+  }
+}
