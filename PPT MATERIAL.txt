@@ -1,0 +1,34 @@
+when there is no GPS or wifi signals, it will be used!
+
+
+you can keep track of your employ. Good for time keeping/tracking work ...track where the people our in the room 
+
+You can use your voice to command !	
+	no remote FOR PROJECTOR/TV/..no Hassle to find it
+	turn off the alarm/firealarm/turn on lights/
+	
+	
+which room people spend most of the time in 
+fos safety
+
+
+
+
+Sensors we have used:
+	Light Resisting Diode
+	Bluetooth beacons
+	UltraSonic 
+	
+	
+
+	
+	
+	
+	
+	
+	
+Technologies Used
+	axure rp ( for prototpying and wireframes)
+	AWS/ X3
+	
+	
