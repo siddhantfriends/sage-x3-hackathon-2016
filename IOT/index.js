@@ -1,4 +1,4 @@
-var i2c_htu21d = require('htu21d-i2c');
+//var i2c_htu21d = require('htu21d-i2c');
 var deviceModule = require("aws-iot-device-sdk").device;
 var path = require("path");
 var fs = require("fs");
@@ -8,13 +8,13 @@ var fs = require("fs");
 // Older boards use /dev/i2c-0, newer ones use /dev/i2c-1.
 // If using any other board, specify the device name.
 // For example: i2c_htu21d({device: '/dev/i2c-1/'});
-var htu21df = new i2c_htu21d();
+//var htu21df = new i2c_htu21d();
 
-var rpio = require("rpio");
+//var rpio = require("rpio");
 
-var topic = "sage/iot/workshop/temperature";
-var topicBtn = "sage/iot/workshop/button/id_1";
-var rpio_btn_pin = 11;
+var topic = "sage/iot/workshop/youngexplorers/test";
+//var topicBtn = "sage/iot/workshop/button/id_1";
+//var rpio_btn_pin = 11;
 
 var interval;
 // setup aws device
@@ -51,8 +51,8 @@ function onpress(cbpin)
 		}));
 	}
 }
-rpio.open(rpio_btn_pin, rpio.INPUT, rpio.PULL_UP);
-rpio.poll(rpio_btn_pin, onpress);
+//rpio.open(rpio_btn_pin, rpio.INPUT, rpio.PULL_UP);
+//rpio.poll(rpio_btn_pin, onpress);
 
    device
       .on('connect', function() {
@@ -60,20 +60,26 @@ rpio.poll(rpio_btn_pin, onpress);
 
 	interval = setInterval(function() {
 		var res = {
-			stamp: (new Date()).toISOString()
+			stamp: (new Date()).toISOString(),
+            sensorNumber: "s2",
+            distance: 40
 		};
-		htu21df.readTemperature(function (temp) {
-			console.log('Temperature, C:', temp);
-			res.temperature = Number(temp);
-		
-		    	htu21df.readHumidity(function (humidity) {
-		        	console.log('Humidity, RH %:', humidity);
-				res.humidity = Number(humidity);
-				//
-				//console.log("Topic: "+topic+" : " +JSON.stringify(res));
-				device.publish(topic, JSON.stringify(res));
-		    	});
-		})
+//		htu21df.readTemperature(function (temp) {
+//			console.log('Temperature, C:', temp);
+//			res.temperature = Number(temp);
+//		
+//		    	htu21df.readHumidity(function (humidity) {
+//		        	console.log('Humidity, RH %:', humidity);
+//				res.humidity = Number(humidity);
+//				//
+//				//console.log("Topic: "+topic+" : " +JSON.stringify(res));
+//				device.publish(topic, JSON.stringify(res));
+//		    	});
+//		})
+        
+        console.log("Publishing", res);
+        device.publish(topic, JSON.stringify(res));
+       
 	}, 10000);
 
 
